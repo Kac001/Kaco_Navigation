@@ -1,6 +1,6 @@
 ﻿import { NextResponse } from 'next/server'
 import { readNavigationData, writeNavigationData } from '../../../lib/navigation-store'
-import { requireAdminFromRequest, unauthorizedResponse } from '../../../lib/request-auth'
+import { invalidOriginResponse, isSameOriginRequest, requireAdminFromRequest, unauthorizedResponse } from '../../../lib/request-auth'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,6 +15,10 @@ export async function GET(request) {
 }
 
 export async function PUT(request) {
+  if (!isSameOriginRequest(request)) {
+    return invalidOriginResponse()
+  }
+
   const admin = requireAdminFromRequest(request)
 
   if (!admin) {

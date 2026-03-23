@@ -55,7 +55,9 @@ export default function SecurityClient({ adminUsername }) {
       confirmPassword: '',
     })
     setSaveState('success')
-    setMessage(payload.message || '密码修改成功。')
+    setMessage(payload.message || '密码修改成功，请重新登录。')
+    router.push('/admin/login')
+    router.refresh()
   }
 
   return (

@@ -5,10 +5,10 @@ import { useState } from 'react'
 
 export default function LoginForm() {
   const router = useRouter()
-  const [username, setUsername] = useState('admin')
-  const [password, setPassword] = useState('admin123456')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const [submitting, setSubmitting] = useState(false)
-  const [message, setMessage] = useState('默认账号：admin / admin123456')
+  const [message, setMessage] = useState('')
 
   async function handleSubmit(event) {
     event.preventDefault()

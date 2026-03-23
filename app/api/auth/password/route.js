@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server'
 import { changeAdminPassword } from '../../../../lib/auth'
-import { requireAdminFromRequest, unauthorizedResponse } from '../../../../lib/request-auth'
+import { invalidOriginResponse, isSameOriginRequest, requireAdminFromRequest, unauthorizedResponse } from '../../../../lib/request-auth'
 
 export async function POST(request) {
+  if (!isSameOriginRequest(request)) {
+    return invalidOriginResponse()
+  }
+
   const admin = requireAdminFromRequest(request)
 
   if (!admin) {
@@ -28,5 +32,5 @@ export async function POST(request) {
     return NextResponse.json({ error: result.error }, { status: 400 })
   }
 
-  return NextResponse.json({ ok: true, message: '密码修改成功。' })
+  return NextResponse.json({ ok: true, message: '密码修改成功，请重新登录。' })
 }

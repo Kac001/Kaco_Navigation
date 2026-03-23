@@ -1,16 +1,35 @@
-# React + Vite
+# Kaco Navigation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+基于 Next.js 的网址导航站点，带后台管理、SQLite 存储和基础 PWA 支持。
 
-Currently, two official plugins are available:
+## 本地启动
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+首次启动如果数据库里还没有管理员账号，必须先提供初始化密码：
 
-## React Compiler
+```bash
+export ADMIN_INITIAL_PASSWORD='please-change-me-now'
+export ADMIN_INITIAL_USERNAME='admin'
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+然后启动项目：
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Docker Compose
+
+```bash
+ADMIN_INITIAL_PASSWORD='please-change-me-now' docker compose up --build
+```
+
+如果数据库里已经存在管理员账号，后续启动不再依赖这个环境变量。
+
+## 已启用的安全策略
+
+- 不再自动创建固定默认密码的管理员账号
+- 登录接口带有基础限流
+- 修改密码后会吊销已有管理员会话
+- 管理接口要求同源请求
+- 后台保存的导航链接仅允许 `http` 和 `https`
