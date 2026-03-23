@@ -86,7 +86,7 @@ function moveLinkBetweenGroups(groups, dragState, targetGroupId, targetLinkId = 
   return nextGroups
 }
 
-export default function AdminClient({ initialData, adminUsername }) {
+export default function AdminClient({ initialData }) {
   const router = useRouter()
   const [formData, setFormData] = useState(initialData)
   const [saveState, setSaveState] = useState('idle')

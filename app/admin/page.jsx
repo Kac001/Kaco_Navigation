@@ -1,4 +1,4 @@
-﻿import { requireAdmin } from '../../lib/auth'
+import { requireAdmin } from '../../lib/auth'
 import { readNavigationData } from '../../lib/navigation-store'
 import AdminClient from './admin-client'
 
