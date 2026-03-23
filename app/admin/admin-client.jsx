@@ -86,6 +86,17 @@ function moveLinkBetweenGroups(groups, dragState, targetGroupId, targetLinkId = 
   return nextGroups
 }
 
+function setDragPreview(event, selector) {
+  const previewElement = event.currentTarget.closest(selector)
+
+  if (!previewElement || !event.dataTransfer) {
+    return
+  }
+
+  const rect = previewElement.getBoundingClientRect()
+  event.dataTransfer.setDragImage(previewElement, rect.width / 2, Math.min(rect.height / 2, 40))
+}
+
 export default function AdminClient({ initialData }) {
   const router = useRouter()
   const [formData, setFormData] = useState(initialData)
@@ -383,7 +394,10 @@ export default function AdminClient({ initialData }) {
                       className="group-drag-handle"
                       draggable
                       onDragEnd={() => setDragGroupId(null)}
-                      onDragStart={() => setDragGroupId(group.id)}
+                      onDragStart={(event) => {
+                        setDragPreview(event, '.group-editor')
+                        setDragGroupId(group.id)
+                      }}
                       type="button"
                     >
                       <span>拖动分类</span>
@@ -437,7 +451,10 @@ export default function AdminClient({ initialData }) {
                         className="link-drag-handle"
                         draggable
                         onDragEnd={() => setDragLinkState(null)}
-                        onDragStart={() => setDragLinkState({ groupId: group.id, linkId: link.id })}
+                        onDragStart={(event) => {
+                          setDragPreview(event, '.link-editor')
+                          setDragLinkState({ groupId: group.id, linkId: link.id })
+                        }}
                         type="button"
                       >
                         <span>拖动</span>
