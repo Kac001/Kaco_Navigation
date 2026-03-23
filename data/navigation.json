@@ -1,0 +1,112 @@
+{
+  "profile": {
+    "name": "Kaco",
+    "role": "前端导航页",
+    "statusTitle": "今日状态",
+    "statusText": "收集常用工具和参考站点，让每次打开浏览器都有明确起点。",
+    "tipsTitle": "快捷提示",
+    "tips": [
+      "点击卡片可直接跳转",
+      "手机端自动改为上下布局",
+      "后续可继续替换成真实站点"
+    ]
+  },
+  "groups": [
+    {
+      "id": "group-1",
+      "title": "分类一",
+      "tone": "amber",
+      "description": "常用搜索、社区与前端入口，适合作为日常起始页。",
+      "links": [
+        {
+          "id": "group-1-link-1",
+          "name": "百度",
+          "url": "https://www.baidu.com/",
+          "meta": "搜索引擎"
+        },
+        {
+          "id": "group-1-link-2",
+          "name": "哔哩哔哩",
+          "url": "https://www.bilibili.com/",
+          "meta": "视频社区"
+        },
+        {
+          "id": "group-1-link-3",
+          "name": "GitHub",
+          "url": "https://github.com/",
+          "meta": "代码托管"
+        },
+        {
+          "id": "group-1-link-4",
+          "name": "React",
+          "url": "https://react.dev/",
+          "meta": "官方文档"
+        }
+      ]
+    },
+    {
+      "id": "group-2",
+      "title": "分类二",
+      "tone": "blue",
+      "description": "技术阅读与开发文档，方便快速查资料和找灵感。",
+      "links": [
+        {
+          "id": "group-2-link-1",
+          "name": "知乎",
+          "url": "https://www.zhihu.com/",
+          "meta": "问答社区"
+        },
+        {
+          "id": "group-2-link-2",
+          "name": "掘金",
+          "url": "https://juejin.cn/",
+          "meta": "技术社区"
+        },
+        {
+          "id": "group-2-link-3",
+          "name": "MDN",
+          "url": "https://developer.mozilla.org/",
+          "meta": "Web 文档"
+        },
+        {
+          "id": "group-2-link-4",
+          "name": "Vite",
+          "url": "https://vite.dev/",
+          "meta": "构建工具"
+        }
+      ]
+    },
+    {
+      "id": "group-3",
+      "title": "分类三",
+      "tone": "green",
+      "description": "效率与设计工具集合，适合整理灵感和团队协作。",
+      "links": [
+        {
+          "id": "group-3-link-1",
+          "name": "少数派",
+          "url": "https://sspai.com/",
+          "meta": "效率内容"
+        },
+        {
+          "id": "group-3-link-2",
+          "name": "Notion",
+          "url": "https://www.notion.so/",
+          "meta": "知识管理"
+        },
+        {
+          "id": "group-3-link-3",
+          "name": "Figma",
+          "url": "https://www.figma.com/",
+          "meta": "界面设计"
+        },
+        {
+          "id": "group-3-link-4",
+          "name": "Stack Overflow",
+          "url": "https://stackoverflow.com/",
+          "meta": "开发问答"
+        }
+      ]
+    }
+  ]
+}
