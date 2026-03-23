@@ -1,6 +1,6 @@
 const STATIC_CACHE = 'nav-static-v2'
 const PAGE_CACHE = 'nav-pages-v2'
-const STATIC_ASSETS = ['/', '/offline', '/manifest.webmanifest', '/favicon.svg', '/icons.svg', '/icon', '/apple-icon']
+const STATIC_ASSETS = ['/', '/offline', '/manifest.webmanifest', '/favicon.svg', '/icons.svg']
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(STATIC_CACHE).then((cache) => cache.addAll(STATIC_ASSETS)))

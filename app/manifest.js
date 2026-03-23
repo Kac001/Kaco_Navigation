@@ -11,20 +11,20 @@ export default function manifest() {
     lang: 'zh-CN',
     icons: [
       {
-        src: '/icon',
-        sizes: '512x512',
-        type: 'image/png',
+        src: '/favicon.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
       },
       {
-        src: '/icon',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'maskable',
+        src: '/icons.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
+        purpose: 'any maskable',
       },
       {
-        src: '/apple-icon',
-        sizes: '180x180',
-        type: 'image/png',
+        src: '/favicon.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
       },
     ],
   }

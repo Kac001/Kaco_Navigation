@@ -6,6 +6,10 @@ export const metadata = {
   description: '基于 Next.js 的网址导航系统与后台管理界面',
   manifest: '/manifest.webmanifest',
   applicationName: '网址导航管理系统',
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',

@@ -365,7 +365,6 @@ export default function AdminClient({ initialData }) {
             {formData.groups.map((group) => (
               <article
                 className="group-editor"
-                draggable
                 key={group.id}
                 ref={(element) => {
                   if (element) {
@@ -374,12 +373,24 @@ export default function AdminClient({ initialData }) {
                     groupRefs.current.delete(group.id)
                   }
                 }}
-                onDragStart={() => setDragGroupId(group.id)}
                 onDragOver={(event) => event.preventDefault()}
                 onDrop={() => handleGroupDrop(group.id)}
               >
                 <div className="group-editor-top">
-                  <h3>{group.title}</h3>
+                  <div className="group-editor-heading">
+                    <button
+                      aria-label={`拖动分类 ${group.title}`}
+                      className="group-drag-handle"
+                      draggable
+                      onDragEnd={() => setDragGroupId(null)}
+                      onDragStart={() => setDragGroupId(group.id)}
+                      type="button"
+                    >
+                      <span>拖动分类</span>
+                      <strong>::</strong>
+                    </button>
+                    <h3>{group.title}</h3>
+                  </div>
                   <button className="danger-button" type="button" onClick={() => removeGroup(group.id)}>
                     删除分类
                   </button>
@@ -417,12 +428,21 @@ export default function AdminClient({ initialData }) {
                   {group.links.map((link) => (
                     <div
                       className="link-editor"
-                      draggable
                       key={link.id}
-                      onDragStart={() => setDragLinkState({ groupId: group.id, linkId: link.id })}
                       onDragOver={(event) => event.preventDefault()}
                       onDrop={() => handleLinkDrop(group.id, link.id)}
                     >
+                      <button
+                        aria-label={`拖动排序 ${link.name}`}
+                        className="link-drag-handle"
+                        draggable
+                        onDragEnd={() => setDragLinkState(null)}
+                        onDragStart={() => setDragLinkState({ groupId: group.id, linkId: link.id })}
+                        type="button"
+                      >
+                        <span>拖动</span>
+                        <strong>::</strong>
+                      </button>
                       <label>
                         <span>名称</span>
                         <input value={link.name} onChange={(event) => updateLink(group.id, link.id, 'name', event.target.value)} />

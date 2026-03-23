@@ -558,6 +558,12 @@ html {
   scroll-margin-top: 24px;
 }
 
+.group-editor-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .link-editor {
   display: flex;
   align-items: flex-end;
@@ -566,6 +572,47 @@ html {
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.76);
   border: 1px dashed rgba(47, 115, 255, 0.12);
+}
+
+.group-drag-handle,
+.link-drag-handle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 0 0 72px;
+  min-height: 52px;
+  padding: 10px 8px;
+  border-radius: 14px;
+  border: 1px dashed rgba(47, 115, 255, 0.26);
+  background: rgba(240, 246, 255, 0.9);
+  color: var(--admin-muted);
+  cursor: grab;
+}
+
+.group-drag-handle {
+  flex: 0 0 96px;
+  min-height: 58px;
+  background: rgba(245, 242, 255, 0.92);
+  border: 1px dashed rgba(97, 104, 199, 0.22);
+}
+
+.group-drag-handle:active,
+.link-drag-handle:active {
+  cursor: grabbing;
+}
+
+.group-drag-handle strong,
+.link-drag-handle strong {
+  font-size: 20px;
+  line-height: 1;
+  color: var(--heading);
+}
+
+.group-drag-handle span,
+.link-drag-handle span {
+  font-size: 12px;
 }
 
 .link-editor label {
@@ -676,6 +723,17 @@ html {
   .link-editor {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .group-editor-heading {
+    width: 100%;
+  }
+
+  .group-drag-handle,
+  .link-drag-handle {
+    flex-basis: auto;
+    width: 100%;
+    flex-direction: row;
   }
 }
 
