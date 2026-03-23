@@ -1,6 +1,6 @@
-const STATIC_CACHE = 'nav-static-v1'
-const PAGE_CACHE = 'nav-pages-v1'
-const STATIC_ASSETS = ['/', '/manifest.webmanifest', '/favicon.svg', '/icons.svg']
+const STATIC_CACHE = 'nav-static-v2'
+const PAGE_CACHE = 'nav-pages-v2'
+const STATIC_ASSETS = ['/', '/offline', '/manifest.webmanifest', '/favicon.svg', '/icons.svg', '/icon', '/apple-icon']
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(STATIC_CACHE).then((cache) => cache.addAll(STATIC_ASSETS)))
@@ -18,6 +18,12 @@ self.addEventListener('activate', (event) => {
     ),
   )
   self.clients.claim()
+})
+
+self.addEventListener('message', (event) => {
+  if (event.data?.type === 'SKIP_WAITING') {
+    self.skipWaiting()
+  }
 })
 
 function shouldBypass(url) {
@@ -49,7 +55,7 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(async () => {
           const cachedPage = await caches.match(event.request)
-          return cachedPage || caches.match('/')
+          return cachedPage || caches.match('/offline') || caches.match('/')
         }),
     )
     return
